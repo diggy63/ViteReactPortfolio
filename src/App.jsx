@@ -1,16 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Homepage from './Pages/Homepage'
+import Header from './Components/Header';
+import { Navigate, Route, Routes } from "react-router-dom";
+import AboutMe from './Pages/AboutMe';
+
 
 export default function App() {
 
 
   return (
     <>
-      <Homepage />
-    </>
+    <Header />
+      <Routes>
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/aboutme" element={<AboutMe/>} />
+      </Routes>
+      </>
   )
 }
 
