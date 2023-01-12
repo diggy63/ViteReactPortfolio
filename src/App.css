@@ -1,0 +1,15 @@
+
+
+.fill{
+    height: 100vh;
+}
+
+.bgBlue{
+    background-color: blue;
+}
+
+.centerText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

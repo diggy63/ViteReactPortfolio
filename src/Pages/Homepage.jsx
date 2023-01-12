@@ -1,7 +1,15 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
 export default function Homepage(){
     return(
-        <h1>HomePage</h1>
+        <Container className="" fluid="sm">
+            <Row className="centerText fill">
+                <Col className="centerText"><h1>Daniel Kanczugowski</h1></Col>
+            
+            </Row>
+        </Container>
     )
 }
