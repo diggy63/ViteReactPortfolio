@@ -1,5 +1,5 @@
-export function getJson(){
-    return fetch("/api/gettest",{
+export function getReservations(){
+    return fetch("/api/reservations/getall",{
         headers:{
 
         }
@@ -10,11 +10,10 @@ export function getJson(){
     }) 
 }
 
-export function postTest(name){
-    console.log(name)
-    return fetch('api/createtest',{
+export function postReservation(body){
+    return fetch('api/reservations/create',{
      method: "POST",
-     body: JSON.stringify(name),
+     body: JSON.stringify(body),
      headers:{
        "Content-Type": "application/json",
      }
