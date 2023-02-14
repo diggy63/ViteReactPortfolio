@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Table, Button, Container } from "react-bootstrap"
+import { Table, Button, Container, Row } from "react-bootstrap"
 import * as ReservationServices from "../utils/ReservationServices"
 
 export default function ReservationList(){
@@ -27,6 +27,7 @@ export default function ReservationList(){
     return(
         <Container className="" fluid="sm">
         <Button variant="primary" onClick={getReservations}>Get Reservations</Button>
+        <Row>
         <Table striped bordered hover>
         <thead>
           <tr>
@@ -42,6 +43,7 @@ export default function ReservationList(){
             {viewList}
         </tbody>
       </Table>
+      </Row>
       </Container>
 
     )

@@ -35,12 +35,8 @@ export default function Homepage(){
 
     return(
         <Container className="" fluid="sm">
-            <Button variant="primary" onClick={getTest}>Get</Button>
-            <Button variant="primary" onClick={postTest}>Post</Button>
-        <input type="text" name="name" value={name.name} onChange={handleNameChange} />
             <Row className="centerText fill">
                 <Col className="centerText"><h1>Daniel Kanczugowski</h1></Col>
-                <Col>{msg}</Col>
             </Row>
         </Container>
     )
