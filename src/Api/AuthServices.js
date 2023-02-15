@@ -1,7 +1,6 @@
-import tokenServices from "./TokenServices";
+import tokenServices from "../Utils/TokenServices"
 
 export function login(body){
-    console.log(body)
     return fetch('api/auth/login',{
      method: "POST",
      body: JSON.stringify(body),

@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col"
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Button } from "react-bootstrap";
-import * as ApiService from "../utils/ApiServices"
+import * as ApiService from "../Api/ApiServices"
 
 export default function Homepage(){
     const [msg,setMsg] = useState('')

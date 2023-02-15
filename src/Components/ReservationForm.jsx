@@ -5,16 +5,17 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button";
 
-import * as ReservationServices from "../utils/ReservationServices"
+import * as ReservationServices from "../Api/ReservationServices"
 
 export default function ReaservationForm(){
     const [reservationPostform,setReservationPost] = useState({
         "name":"",
         "number":"",
-        "dateAndTime":"",
+        "date":"",
         "guests": "",
         "body":"",
-        "email":""
+        "email":"",
+        "time":""
     })
     const [reservations,setReservations] = useState([])
 
@@ -58,9 +59,9 @@ export default function ReaservationForm(){
         <Form.Label htmlFor="inputPassword5">Date and Time</Form.Label>
             <Form.Control
                 type="text"
-                id="dateAndTime"
-                name="dateAndTime"
-                value={reservationPostform.dateAndTime}
+                id="date"
+                name="date"
+                value={reservationPostform.date}
                 aria-describedby="passwordHelpBlock"
                 onChange={handleChange}
             />

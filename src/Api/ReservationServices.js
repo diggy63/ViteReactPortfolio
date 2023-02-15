@@ -1,3 +1,6 @@
+import tokenServices from '../Utils/TokenServices'
+
+
 export function getReservations(){
     return fetch("/api/reservations/getall",{
         headers:{
@@ -20,5 +23,19 @@ export function postReservation(body){
     }).then((resp) =>{
        if(resp.ok) return resp.json();
        throw new Error('could not add')
+    })
+}
+
+export function scanEmail(){
+    return fetch("/api/emailReader/Scan", {
+        method:"GET",
+        headers:{
+            "Content-Type": "applications/json",
+            'Authorization' : 'Bearer ' + tokenServices.getToken()
+        }
+
+    }).then((resp) =>{
+        console.log(resp)
+        return resp.json();
     })
 }

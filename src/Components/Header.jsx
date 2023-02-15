@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header(user) {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
@@ -22,6 +22,11 @@ export default function Header() {
             <Link className="nav-link" to="/aboutme">
                 <div> About Me </div>
             </Link>
+            {user === [] ? null : 
+        <Link className="nav-link" to="/reservations">
+         <div> Reservations </div>
+        </Link>
+            }
           
 
 

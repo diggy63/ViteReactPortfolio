@@ -1,8 +1,12 @@
 import React, {useState} from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import * as AuthServices from "../utils/AuthServices"
+import * as AuthServices from "../Api/AuthServices"
+import userServices from "../Utils/UserServices"
+import Alert from 'react-bootstrap/Alert';
 
-export default function Login(){
+
+export default function Login({findUserAfterLogin}){
+    const [message,setMessage] = useState("")
     const [loginInfo, setLoginInfo] = useState({
         "email":"",
         "password":"",
@@ -15,9 +19,13 @@ export default function Login(){
     }
 
     async function handleLogin(e){
-        e.preventDefault()
+      e.preventDefault()
         const token = await AuthServices.login(loginInfo)
-        
+        if(token.error){
+          setMessage("Email or Password is not valid")
+        }else{
+          findUserAfterLogin()
+        }
     }
 
 
@@ -41,8 +49,12 @@ export default function Login(){
       <Button variant="primary" type="submit" onClick={handleLogin}>
         Submit
       </Button>
+      {message === '' ? null : 
+        <Alert variant='danger'>{message}</Alert>
+        }
     </Form>
                 </Col>
+                
             </Row>
         </Container>
     )
