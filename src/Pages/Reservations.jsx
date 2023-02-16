@@ -26,9 +26,12 @@ export default function Reservations(){
     const closeModal = () => setShow(false)
 
     async function handleShow(res){
-        if(res != 0){
+        if(res.id){
+            setResId(res.id)
             setResUpdate(res)
         }else{
+            console.log("there")
+            setResId(0)
             setResUpdate({
                 name: "",
                 number: "",

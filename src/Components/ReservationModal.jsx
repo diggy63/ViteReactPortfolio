@@ -9,7 +9,7 @@ import * as ReservationServices from "../Api/ReservationServices"
 
 export default function ReservationModel({ show, closeModal, onHide, resId, resUpdate }) {
 
-  const [reservations, setReservations] = useState([]);
+  const [saveId, setSaveId] = useState(0);
   const [reservationPostform, setReservationPost] = useState({
     name: "",
     number: "",
@@ -19,11 +19,11 @@ export default function ReservationModel({ show, closeModal, onHide, resId, resU
     email: "",
     time: "",
   });
-  if(resUpdate.id){
+  if(saveId != resId){
+    setSaveId(resId)
     setReservationPost(resUpdate)
+    console.log("new")
   }
-
-
   function handleChange(e) {
     setReservationPost({
       ...reservationPostform,
