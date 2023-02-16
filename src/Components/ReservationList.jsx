@@ -2,28 +2,23 @@ import React, { useState } from "react"
 import { Table, Button, Container, Row } from "react-bootstrap"
 import * as ReservationServices from "../Api/ReservationServices"
 
-export default function ReservationList(){
-    const [reservationList,setResverationList] = useState([])
-    async function getReservations(){
-        const getReservationList = await ReservationServices.getReservations()
-        setResverationList(getReservationList)
-    }
+export default function ReservationList({reservationList, getReservations, handleShow}){
 
-    async function scanEmail(){
-      const scanResult = await ReservationServices.scanEmail()
-      console.log(scanResult.msg);
-      if(scanResult.msg == "Missing Authorization Header"){
-        alert("not authorized")
-      }else if(scanResult.msg == "scan succesfull"){
-        alert("scan successful")
-      }else{
-        alert("error auth ok, Its something else")
-      }
-    }
+  async function handleDelte(id){
+    const ans = await ReservationServices.deleteReservation(id)
+    getReservations()
+    
+  }
+
+  async function handleFind(id){
+    const ans  = await ReservationServices.getOne(id)
+    handleShow(ans)
+  }
+
 
     const viewList = reservationList.map(item =>{
         return(
-        <tr>
+        <tr key={item.id}>
             <td>{item.name}</td>
             <td>{item.number}</td>
             <td>{item.email}</td>
@@ -31,6 +26,7 @@ export default function ReservationList(){
             <td>{item.time}</td>
             <td>{item.guests}</td>
             <td>{item.body}</td>
+            <td><Button onClick={() => handleDelte(item.id)}>X</Button><Button onClick={() => handleFind(item.id)}>Update</Button></td>
         </tr>
         )
     })
@@ -38,8 +34,6 @@ export default function ReservationList(){
 
     return(
         <Container className="" fluid="sm">
-        <Button variant="primary" onClick={getReservations}>Get Reservations</Button>
-        <Button variant="primary" onClick={scanEmail}>Manuel Scan For New Reservations</Button>
         <Row>
         <Table striped bordered hover>
         <thead>
@@ -51,6 +45,7 @@ export default function ReservationList(){
             <th>Time</th>
             <th>Guests</th>
             <th>Requests</th>
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
